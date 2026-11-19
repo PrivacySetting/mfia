@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply · The Italian Mafia [MFIA]</title>
+<meta name="description" content="Apply to The Italian Mafia [MFIA]. This form works any time.">
+<link rel="icon" href="img/logo.png">
+<meta property="og:title" content="Apply · The Italian Mafia [MFIA]">
+<meta property="og:description" content="Spots are limited. Leadership reads every application.">
+<meta property="og:image" content="https://privacysetting.github.io/mfia/img/wipe_update.png">
+<meta name="theme-color" content="#e23428">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0d; --panel:#141417; --panel2:#1b1b20; --line:#2a2a31;
+  --text:#e9e7e2; --dim:#9a9aa3; --red:#e23428; --red2:#a8221a; --gold:#d6b25c; --green:#57c784;
+  --head:"Oswald","Impact","Arial Narrow",sans-serif; --body:"Inter","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.55;
+  background-image:radial-gradient(900px 500px at 50% -10%,rgba(226,52,40,.18),transparent 70%)}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2{font-family:var(--head);text-transform:uppercase;letter-spacing:.02em;line-height:1.1;margin:0}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 80px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--head);font-size:20px;color:var(--text)}
+.brand img{width:34px;height:34px;border-radius:6px}
+.brand b{color:var(--red)}
+.kicker{font-family:var(--head);color:var(--red);font-size:18px;text-transform:uppercase;letter-spacing:.08em;margin-top:26px}
+h1{font-size:clamp(38px,8vw,64px);margin:.1em 0 .2em}
+.lead{color:var(--dim);margin:0 0 22px}
+.lead strong{color:var(--text)}
+form{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px}
+fieldset{border:0;padding:0;margin:0 0 6px}
+legend{font-family:var(--head);text-transform:uppercase;color:var(--gold);font-size:20px;padding:0;margin:8px 0 12px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+label{display:block;margin:0 0 14px;font-size:14px;font-weight:600}
+label small{display:block;font-weight:400;color:var(--dim);margin-top:2px}
+input,textarea,select{display:block;width:100%;margin-top:6px;padding:11px 12px;border-radius:6px;border:1px solid var(--line);
+  background:var(--panel2);color:var(--text);font:inherit;font-size:16px}
+textarea{min-height:96px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--red);outline-offset:1px;border-color:var(--red)}
+input[type=file]{padding:9px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.btn{display:inline-block;font-family:var(--head);text-transform:uppercase;font-size:20px;padding:13px 30px;border-radius:6px;
+  background:var(--red);color:#fff;border:1px solid var(--red);cursor:pointer;box-shadow:0 0 22px rgba(226,52,40,.45);transition:.2s}
+.btn:hover{background:var(--red2);text-decoration:none}
+.btn[disabled]{opacity:.5;cursor:wait}
+.btn.ghost{background:transparent;border-color:var(--line);box-shadow:none;font-size:15px;padding:7px 14px}
+#msg{margin:14px 0 0;min-height:1.5em;font-weight:600}
+#msg.bad{color:#ff6b5e}
+#done{display:none;background:var(--panel);border:1px solid var(--green);border-radius:10px;padding:28px;text-align:center}
+#done h2{color:var(--green);font-size:34px;margin-bottom:10px}
+.note{color:var(--dim);font-size:14px;margin-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="./"><img src="img/logo.png" alt=""><span>The Italian <b>Mafia</b></span></a>
+    <a class="btn ghost" href="./">Back to the site</a>
+  </header>
+
+  <div class="kicker">Next wipe · Friday, Nov 20</div>
+  <h1>Apply</h1>
+  <p class="lead">Spots are limited. Leadership reads every one. <strong>You must be in our Discord</strong> or we cannot answer you.
+    Not in yet? <a id="inv" href="./#join" target="_blank" rel="noopener">Join first.</a></p>
+
+  <form id="f" novalidate>
+    <fieldset>
+      <legend>You</legend>
+      <label>Discord username
+        <small>Your username, not your nickname. Like <em>johnny.b</em>. Find it at the bottom left of Discord.</small>
+        <input name="discord" maxlength="40" required autocomplete="off">
+      </label>
+      <div class="row">
+        <label>Rob Run name<input name="name" maxlength="40" required autocomplete="off"></label>
+        <label>Rob Run UID<small>Numbers only. Copy it from the game.</small><input name="uid" maxlength="20" inputmode="numeric" required autocomplete="off"></label>
+      </div>
+      <div class="row">
+        <label>Age<input name="age" maxlength="3" inputmode="numeric" required autocomplete="off"></label>
+        <label>Steam hours<input name="hours" maxlength="10" inputmode="numeric" placeholder="Like 1200" required autocomplete="off"></label>
+      </div>
+      <label>When do you play
+        <small>Days, hours, timezone.</small>
+        <input name="schedule" maxlength="200" placeholder="Weekdays 18:00 to 23:00, weekends all day. EST" required>
+      </label>
+      <label>Do you have a mic
+        <select name="mic" required><option value="">Pick one</option><option>Yes</option><option>No</option></select>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Your case</legend>
+      <label>Previous experience<small>Clans, games.</small><textarea name="exp" maxlength="600" required></textarea></label>
+      <label>Why should you be in the next wipe<textarea name="why" maxlength="800" required></textarea></label>
+      <label>Links<small>Optional. Clips, profiles. Up to 8, one per line.</small><textarea name="clips" maxlength="400" style="min-height:70px"></textarea></label>
+      <label>Images or files<small>Optional. Up to 6, each under 9 MB.</small><input type="file" name="files" multiple></label>
+    </fieldset>
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <button class="btn" id="go" type="submit">Send application</button>
+    <p id="msg" role="status"></p>
+    <p class="note">One application at a time. Lying on it gets you removed. You get the answer in a Discord DM, so keep your DMs open.</p>
+  </form>
+
+  <div id="done">
+    <h2>Sent</h2>
+    <p>Leadership will read it. The answer comes in a Discord DM.<br>Stay in the server and keep your DMs open.</p>
+    <p><a class="btn ghost" href="./">Back to the site</a></p>
+  </div>
+</div>
+
+<script>
+const K = "==Qa61yTwF0dMN1QSZWYlFDZFZmNhx2XsN0SSFXeU1SS3YVWshnbqp3dfBXSLNVemhFajRzb1p2N6BjRfJUcmxWa15WW39iN4YDOxYDM2MzN2cDOyAzM3UTMvM3av9GaiV2dvkGch9SbvNmLkJ3bjNXak9yL6MHc0RHa";                       // filled in by the build step
+const HOOK = atob(K.split("").reverse().join(""));
+const INVITE = "https://discord.gg/zQfg28ucWt";
+document.getElementById("inv").href = INVITE;
+
+const f = document.getElementById("f"), msg = document.getElementById("msg"), go = document.getElementById("go");
+const MAX_FILES = 6, MAX_BYTES = 9000000, MAX_TOTAL = 24000000, MIN_AGE = 18, WAIT_MS = 10 * 60 * 1000;
+const say = (t, bad) => { msg.textContent = t; msg.className = bad ? "bad" : ""; };
+const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+                set(k,v){ try { localStorage.setItem(k,v); } catch(e){} } };
+
+function check(v){
+  if (!/^[a-z0-9._]{2,32}$/i.test(v.discord)) return "Discord username looks wrong. Use the username, no spaces.";
+  if (!v.name) return "Your Rob Run name is missing.";
+  if (!/^\d{3,20}$/.test(v.uid)) return "The UID must be numbers only. Copy it from the game.";
+  if (!/^\d{1,2}$/.test(v.age)) return "Age must be a number.";
+  if (+v.age < MIN_AGE) return "You must be " + MIN_AGE + " or older.";
+  if (!/^\d{1,6}$/.test(v.hours)) return "Steam hours must be a number, like 1200.";
+  if (!v.schedule) return "Say when you play.";
+  if (!v.mic) return "Say if you have a mic.";
+  if (!v.exp) return "Previous experience is missing.";
+  if (!v.why) return "Say why you should be in the next wipe.";
+  const links = v.clips ? v.clips.split(/[\s,]+/).filter(Boolean) : [];
+  if (links.length > 8 || links.some(l => !/^https?:\/\/\S+\.\S+$/i.test(l))) return "Links must start with http. 8 at most. Or leave it empty.";
+  return "";
+}
+
+f.addEventListener("submit", async ev => {
+  ev.preventDefault();
+  const fd0 = new FormData(f), v = {};
+  for (const k of ["discord","name","uid","age","hours","schedule","mic","exp","why","clips","website"]) v[k] = String(fd0.get(k) || "").trim();
+  v.discord = v.discord.replace(/^@/, "").toLowerCase();
+  v.uid = v.uid.replace(/\s+/g, "");
+  v.hours = v.hours.replace(/[,\s]|h(ours?|rs?)?$/gi, "");
+  if (v.website) return;                                    // bots fill hidden fields
+  const bad = check(v);
+  if (bad) return say(bad, true);
+  const files = [...f.files.files];
+  if (files.length > MAX_FILES) return say("6 files at most.", true);
+  if (files.some(x => x.size > MAX_BYTES)) return say("One of the files is over 9 MB. Send a link instead.", true);
+  if (files.reduce((n, x) => n + x.size, 0) > MAX_TOTAL) return say("The files are too big together. Send links instead.", true);
+  const last = +store.get("mfia_applied") || 0;
+  if (Date.now() - last < WAIT_MS) return say("You already sent one. Wait for the answer.", true);
+
+  const links = v.clips ? v.clips.split(/[\s,]+/).filter(Boolean).join("\n") : "None";
+  const payload = {
+    username: "Website application",
+    allowed_mentions: { parse: [] },
+    embeds: [{
+      title: "🌐 Web application · " + v.name.slice(0, 60),
+      description: "Sent from the website form.",
+      color: 0xd6b25c,
+      fields: [
+        { name: "Discord", value: v.discord, inline: true },
+        { name: "Rob Run name", value: v.name, inline: true },
+        { name: "UID", value: v.uid, inline: true },
+        { name: "Age", value: v.age, inline: true },
+        { name: "Steam hours", value: v.hours, inline: true },
+        { name: "Mic", value: v.mic, inline: true },
+        { name: "Plays", value: v.schedule },
+        { name: "Previous experience", value: v.exp },
+        { name: "Why the next wipe", value: v.why },
+        { name: "Links", value: links }
+      ],
+      footer: { text: "mfia-web-application" },
+      timestamp: new Date().toISOString()
+    }]
+  };
+  const fd = new FormData();
+  fd.append("payload_json", JSON.stringify(payload));
+  files.forEach((x, i) => fd.append("files[" + i + "]", x, x.name));
+  go.disabled = true; say("Sending…");
+  try {
+    const r = await fetch(HOOK + "?wait=true", { method: "POST", body: fd });
+    if (!r.ok) throw new Error(r.status);
+    store.set("mfia_applied", String(Date.now()));
+    f.style.display = "none";
+    document.getElementById("done").style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } catch (e) {
+    go.disabled = false;
+    say("Could not send it. Try again in a minute, or press Apply in the Discord.", true);
+  }
+});
+</script>
+</body>
+</html>
