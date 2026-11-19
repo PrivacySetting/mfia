@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Italian Mafia [MFIA]</title>
+<meta name="description" content="The Italian Mafia [MFIA]. A Rob Run crime family. Rules, ranks, dues, operations and everything a member needs.">
+<link rel="icon" href="img/logo.png">
+<meta property="og:title" content="The Italian Mafia [MFIA]">
+<meta property="og:description" content="A Rob Run crime family. 13 businesses and 2 districts last wipe. Applications are open.">
+<meta property="og:image" content="https://privacysetting.github.io/mfia/img/wipe_update.png">
+<meta property="og:url" content="https://privacysetting.github.io/mfia/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#e23428">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0d; --panel:#141417; --panel2:#1b1b20; --line:#2a2a31;
+  --text:#e9e7e2; --dim:#9a9aa3; --red:#e23428; --red2:#a8221a; --gold:#d6b25c; --green:#57c784;
+  --head:"Oswald","Impact","Arial Narrow",sans-serif; --body:"Inter","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.55}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-family:var(--head);text-transform:uppercase;letter-spacing:.02em;line-height:1.1;margin:0}
+h2{font-size:clamp(30px,5vw,44px)}
+h3{font-size:20px;color:var(--gold)}
+p{margin:.5em 0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:20;background:rgba(11,11,13,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:14px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--head);font-size:20px;color:var(--text);white-space:nowrap}
+.brand img{width:36px;height:36px;object-fit:contain}
+.brand b{color:var(--red)}
+nav.links{display:flex;gap:2px;overflow-x:auto;flex:1;scrollbar-width:none}
+nav.links::-webkit-scrollbar{display:none}
+nav.links a{color:var(--dim);font-family:var(--head);text-transform:uppercase;font-size:15px;padding:8px 10px;border-radius:6px;white-space:nowrap}
+nav.links a:hover,nav.links a.on{color:var(--text);background:var(--panel2);text-decoration:none}
+.btn{display:inline-block;font-family:var(--head);text-transform:uppercase;font-size:17px;padding:10px 20px;border-radius:6px;background:var(--red);color:#fff;border:1px solid var(--red);white-space:nowrap}
+.btn:hover{background:var(--red2);text-decoration:none}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.btn.ghost:hover{background:var(--panel2)}
+.nav .btn{font-size:15px;padding:7px 14px}
+
+/* hero */
+.hero{position:relative;border-bottom:1px solid var(--line);background:radial-gradient(1000px 420px at 70% 0%,rgba(226,52,40,.20),transparent 70%),linear-gradient(#0b0b0d,#0e0e11)}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:32px;align-items:center;padding-top:64px;padding-bottom:64px}
+.kicker{font-family:var(--head);color:var(--red);font-size:20px;text-transform:uppercase;letter-spacing:.08em}
+.hero h1{font-size:clamp(46px,9vw,96px);margin:.08em 0 .14em}
+.hero p.lead{font-size:19px;color:#cfcdc7;max-width:34em}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero img.crest{width:100%;max-width:340px;justify-self:center;filter:drop-shadow(0 12px 40px rgba(226,52,40,.35))}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--dim);font-size:14px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-28px;position:relative;z-index:2}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+.stat b{display:block;font-family:var(--head);font-size:38px;color:var(--gold);line-height:1}
+.stat span{color:var(--dim);font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+
+section{padding:64px 0 8px}
+.sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.sec-head .num{font-family:var(--head);color:var(--red);font-size:20px}
+.sec-head p{color:var(--dim);margin:0;flex-basis:100%}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}
+.card h3{margin-bottom:6px}
+.card p{color:#cfcdc7}
+.card.red{border-color:var(--red2);background:linear-gradient(180deg,rgba(226,52,40,.12),var(--panel))}
+.tag{display:inline-block;font-family:var(--head);font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:4px;background:var(--panel2);border:1px solid var(--line);color:var(--dim)}
+.tag.red{background:var(--red);border-color:var(--red);color:#fff}
+ul.clean{list-style:none;padding:0;margin:0}
+ul.clean li{padding:7px 0;border-bottom:1px solid var(--line)}
+ul.clean li:last-child{border-bottom:0}
+strong{color:#fff}
+code{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:.92em;color:var(--gold)}
+
+/* steps */
+.steps{counter-reset:s;display:grid;gap:10px}
+.step{display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+.step::before{counter-increment:s;content:counter(s);font-family:var(--head);font-size:30px;color:#fff;background:var(--red);width:54px;height:54px;border-radius:8px;display:grid;place-items:center}
+.step h3{color:var(--text)}
+.step p{margin:.2em 0 0;color:#cfcdc7}
+
+/* rules */
+.rule{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 16px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.rule .n{font-family:var(--head);font-size:34px;color:var(--red);line-height:1}
+.rule h3{color:var(--text)}
+.rule p{margin:.2em 0 0;color:#cfcdc7}
+.rule.hard{border-color:var(--red);background:linear-gradient(90deg,rgba(226,52,40,.18),var(--panel) 60%)}
+
+/* ranks */
+.ladder{display:grid;gap:8px}
+.rank{display:grid;grid-template-columns:44px 190px 1fr;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--c,var(--line));border-radius:8px;padding:12px 14px}
+.rank .ico{font-size:24px;text-align:center}
+.rank b{font-family:var(--head);font-size:20px;text-transform:uppercase;color:var(--c,var(--text))}
+.rank span{color:#cfcdc7}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tbl th,.tbl td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{font-family:var(--head);text-transform:uppercase;font-size:14px;letter-spacing:.06em;color:var(--dim);background:var(--panel2)}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td.g{color:var(--gold);white-space:nowrap}
+.scroll{overflow-x:auto}
+
+/* checklist */
+.check{display:grid;gap:8px}
+.check label{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;cursor:pointer}
+.check input{appearance:none;flex:none;width:22px;height:22px;border:2px solid var(--dim);border-radius:5px;margin-top:1px;cursor:pointer}
+.check input:checked{background:var(--red);border-color:var(--red)}
+.check input:checked::after{content:"✓";display:grid;place-items:center;color:#fff;font-weight:700;font-size:15px;line-height:18px}
+.check label:has(input:checked) span{color:var(--dim);text-decoration:line-through}
+.bar{height:8px;background:var(--panel2);border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;width:0;background:var(--red);transition:width .25s}
+
+details{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:0 16px}
+details+details{margin-top:8px}
+summary{cursor:pointer;padding:14px 0;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--red);font-family:var(--head);font-size:22px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 14px;color:#cfcdc7}
+
+.shot{width:100%;border:1px solid var(--line);border-radius:10px;display:block}
+.note{color:var(--dim);font-size:14px}
+.tools a{display:block;color:var(--text)}
+.tools a b{font-family:var(--head);text-transform:uppercase;font-size:18px;color:var(--gold);display:block}
+.tools a:hover{border-color:var(--gold);text-decoration:none}
+footer{margin-top:72px;border-top:1px solid var(--line);padding:28px 0 40px;color:var(--dim);font-size:14px}
+
+/* ---------- atmosphere: painted art, smoke, grain, embers ---------- */
+.hero{background:#060607;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-3;background:url(img/crew.jpg) center 18%/cover no-repeat;filter:saturate(.75) contrast(1.12) brightness(.62);animation:drift 40s ease-in-out infinite alternate}
+.hero::after{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(6,6,7,.96) 0%,rgba(6,6,7,.78) 42%,rgba(6,6,7,.25) 100%),linear-gradient(0deg,#0b0b0d 0%,transparent 38%),radial-gradient(700px 380px at 78% 30%,rgba(226,52,40,.30),transparent 70%)}
+@keyframes drift{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.12) translate3d(-1.5%,-1%,0)}}
+.hero .wrap{min-height:min(78vh,720px)}
+.hero h1{text-shadow:0 0 34px rgba(226,52,40,.55),0 4px 0 #000;animation:flick 7s infinite}
+@keyframes flick{0%,91%,95%,100%{opacity:1}92%{opacity:.72}93%{opacity:1}94%{opacity:.5}}
+.hero img.crest{animation:pulse 5s ease-in-out infinite}
+@keyframes pulse{50%{filter:drop-shadow(0 12px 60px rgba(226,52,40,.75))}}
+.smoke{position:absolute;inset:-10% -10% -10% -10%;pointer-events:none;z-index:-1;opacity:.5;mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='900'><filter id='n' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='0.007 0.011' numOctaves='4' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .78  0 0 0 0 .78  0 0 0 0 .82  0 0 0 1.5 -.62'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size:900px 900px;animation:smoke 70s linear infinite}
+.smoke.b{opacity:.32;background-size:1400px 1400px;animation:smoke2 110s linear infinite;filter:blur(6px)}
+@keyframes smoke{to{background-position:900px -900px}}
+@keyframes smoke2{to{background-position:-1400px -700px}}
+.smoke.page{position:fixed;inset:0;z-index:0;opacity:.13}
+main,footer,.stats{position:relative;z-index:1}
+body::after{content:"";position:fixed;inset:0;z-index:30;pointer-events:none;opacity:.07;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>")}
+body::before{content:"";position:fixed;inset:0;z-index:29;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
+.embers{position:absolute;inset:0;pointer-events:none;z-index:-1}
+.embers i{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:#ff6a3d;box-shadow:0 0 8px 2px rgba(255,90,40,.8);opacity:0;animation:rise linear infinite}
+@keyframes rise{0%{transform:translate3d(0,0,0);opacity:0}10%{opacity:.9}100%{transform:translate3d(var(--x,30px),-80vh,0);opacity:0}}
+
+/* painted strips between sections */
+.strip{position:relative;height:clamp(180px,30vw,340px);margin:72px 0 -28px;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;filter:saturate(.7) contrast(1.15) brightness(.5);will-change:transform}
+.strip::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0b0b0d 0%,transparent 30%,transparent 62%,#0b0b0d 100%),linear-gradient(90deg,rgba(226,52,40,.28),transparent 60%)}
+.strip b{position:absolute;left:50%;bottom:22%;transform:translateX(-50%);z-index:2;width:min(1120px,100%);padding:0 16px;font-family:var(--head);font-size:clamp(34px,7vw,84px);line-height:1;text-transform:uppercase;color:#fff;text-shadow:0 0 30px rgba(226,52,40,.6),0 3px 0 #000}
+.strip b small{display:block;font-size:.26em;letter-spacing:.3em;color:var(--red);margin-bottom:.4em}
+
+/* footage */
+.trailer{position:relative;border:1px solid var(--red2);border-radius:10px;overflow:hidden;box-shadow:0 0 60px rgba(226,52,40,.22);background:#000}
+.trailer video{display:block;width:100%;aspect-ratio:16/9}
+.reel{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.reel figure{margin:0;position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#000;aspect-ratio:16/9}
+.reel video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s,filter .5s;filter:grayscale(.35)}
+.reel figure:hover video{transform:scale(1.07);filter:none}
+.reel figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 8px;font-family:var(--head);text-transform:uppercase;font-size:17px;letter-spacing:.05em;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.reel figure::after{content:"";position:absolute;inset:0;border:2px solid transparent;border-radius:8px;transition:border-color .3s;pointer-events:none}
+.reel figure:hover::after{border-color:var(--red)}
+
+/* motion */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.card,.rule,.rank,.step,.stat{transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:hover,.rule:hover,.rank:hover,.step:hover,.stat:hover{transform:translateY(-3px);border-color:var(--red2);box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 24px rgba(226,52,40,.14)}
+.sec-head h2{position:relative;padding-bottom:10px}
+.sec-head h2::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:64px;background:var(--red);box-shadow:0 0 14px var(--red)}
+.btn:not(.ghost){box-shadow:0 0 22px rgba(226,52,40,.45)}
+.stat b{text-shadow:0 0 18px rgba(214,178,92,.35)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+@media (max-width:820px){
+  .reel{grid-template-columns:repeat(2,1fr)}
+  .hero .wrap{grid-template-columns:1fr;padding-top:40px;padding-bottom:56px}
+  .hero img.crest{max-width:200px;order:-1;justify-self:start}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .g2,.g3{grid-template-columns:1fr}
+  .rank{grid-template-columns:36px 1fr}
+  .rank span{grid-column:1/-1}
+  .brand span{display:none}
+}
+</style>
+<style>
+/* ---------- interaction layer ---------- */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:40;background:linear-gradient(90deg,var(--red2),var(--red),#ff7a4d);box-shadow:0 0 12px var(--red)}
+#spot{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(closest-side,rgba(226,52,40,.13),transparent 70%);transform:translate3d(-999px,-999px,0);transition:opacity .4s}
+#curtain{position:fixed;inset:0;z-index:60;background:#060607;display:grid;place-items:center;transition:opacity .7s ease .5s,visibility 0s linear 1.2s}
+#curtain img{width:120px;animation:pulse 1.2s ease-in-out infinite}
+#curtain.gone{opacity:0;visibility:hidden}
+#top-btn{position:fixed;right:18px;bottom:18px;z-index:35;width:46px;height:46px;border-radius:8px;border:1px solid var(--red2);background:rgba(20,20,23,.92);color:#fff;font:700 20px var(--head);cursor:pointer;opacity:0;transform:translateY(12px);transition:.3s;box-shadow:0 0 18px rgba(226,52,40,.3)}
+#top-btn.on{opacity:1;transform:none}
+#top-btn:hover{background:var(--red)}
+nav.links a{position:relative;transition:color .2s,background .2s}
+nav.links a::after{content:"";position:absolute;left:10px;right:10px;bottom:3px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+nav.links a.on::after,nav.links a:hover::after{transform:scaleX(1)}
+.btn{position:relative;overflow:hidden;transition:transform .15s,background .2s,box-shadow .2s}
+.btn:active{transform:scale(.96)}
+.btn::before{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-20deg);transition:left .5s}
+.btn:hover::before{left:130%}
+.tilt{transform-style:preserve-3d;will-change:transform}
+.sec-head h2{clip-path:inset(0 100% 0 0);transition:clip-path .9s cubic-bezier(.2,.7,.1,1)}
+.sec-head.in h2{clip-path:inset(0 0 0 0)}
+.sec-head .num,.sec-head p{opacity:0;transform:translateX(-14px);transition:.6s ease .25s}
+.sec-head.in .num,.sec-head.in p{opacity:1;transform:none}
+/* ranks open on click */
+.rank{cursor:pointer;grid-template-columns:44px 190px 1fr 24px}
+.rank::after{content:"+";font:700 22px var(--head);color:var(--red);transition:transform .3s;justify-self:end}
+.rank.open::after{transform:rotate(45deg)}
+.rank .more{grid-column:1/-1;max-height:0;overflow:hidden;opacity:0;transition:max-height .45s ease,opacity .35s,margin .35s;color:#cfcdc7;border-top:1px solid transparent}
+.rank.open{border-color:var(--c,var(--red2));box-shadow:0 0 26px color-mix(in srgb,var(--c,#e23428) 22%,transparent)}
+.rank.open .more{max-height:220px;opacity:1;margin-top:10px;padding-top:10px;border-top-color:var(--line)}
+.rank .more b{font:inherit;font-weight:600;color:#fff;text-transform:none;font-size:inherit}
+/* rules: press to mark as read */
+.rule{cursor:pointer;position:relative;user-select:none}
+.rule::after{content:"";position:absolute;right:16px;top:50%;width:26px;height:26px;margin-top:-13px;border:2px solid var(--line);border-radius:50%;transition:.25s}
+.rule.read::after{content:"✓";display:grid;place-items:center;color:#fff;font-weight:700;background:var(--red);border-color:var(--red);box-shadow:0 0 14px var(--red)}
+.rule.read{border-color:var(--red2)}
+.rule>div:last-child{padding-right:44px}
+#oath{margin-top:12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+#oath .bar{flex:1;min-width:160px;margin:0}
+#oath.done span{color:var(--gold)}
+/* calculator */
+.calc{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.calc label{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;font-size:13px;color:var(--dim);text-transform:uppercase;letter-spacing:.05em}
+.calc .row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:6px}
+.calc button{width:32px;height:32px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:#fff;font:700 18px var(--head);cursor:pointer;transition:.15s}
+.calc button:hover{background:var(--red);border-color:var(--red)}
+.calc output{font:700 30px var(--head);color:#fff;min-width:34px}
+.need{margin-top:12px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+.need b{font:700 54px var(--head);color:var(--red);line-height:1;text-shadow:0 0 20px rgba(226,52,40,.5);transition:transform .2s}
+.need b.bump{transform:scale(1.18)}
+.need span{color:var(--gold);font-family:var(--head);font-size:22px}
+details p{animation:drop .35s ease}
+@keyframes drop{from{opacity:0;transform:translateY(-8px)}}
+details[open]{border-color:var(--red2)}
+.check label{transition:border-color .2s,transform .2s}
+.check label:hover{border-color:var(--red2);transform:translateX(4px)}
+.tbl tr{transition:background .2s}
+.tbl tr:hover td{background:rgba(226,52,40,.07)}
+@media (hover:none){#spot{display:none}}
+@media (max-width:820px){.rank{grid-template-columns:36px 1fr 24px}.calc{grid-template-columns:1fr}}
+</style>
+<style>
+/* ---------- less text on screen: things open when you press them ---------- */
+.rule p{max-height:0;opacity:0;overflow:hidden;margin:0;transition:max-height .4s ease,opacity .3s,margin .3s}
+.rule.read p,.rule.hard p{max-height:140px;opacity:1;margin:.2em 0 0}
+.rule{align-items:center}
+ul.clean li.extra{display:none}
+.card.all ul.clean li.extra{display:block;animation:drop .3s ease}
+.more-btn{margin-top:10px;background:none;border:1px solid var(--line);color:var(--gold);font:500 14px var(--head);text-transform:uppercase;letter-spacing:.08em;padding:6px 12px;border-radius:6px;cursor:pointer;transition:.2s}
+.more-btn:hover{border-color:var(--gold);background:rgba(214,178,92,.08)}
+details.fold{padding:0;margin-top:12px}
+details.fold summary{padding:14px 16px;font-family:var(--head);text-transform:uppercase;letter-spacing:.05em;color:var(--gold)}
+details.fold .tbl{border:0;border-top:1px solid var(--line);border-radius:0}
+.sec-head p{max-width:46em}
+</style>
+<style>
+/* ---------- review pass ---------- */
+.sec-head p{flex-basis:100%;width:100%;max-width:none}
+.rank{position:relative;grid-template-columns:44px 190px 1fr;padding-right:46px}
+.rank::after{position:absolute;right:16px;top:14px}
+.rule p,.rule.read p,.rule.hard p{max-height:none;opacity:1;margin:.15em 0 0;font-size:15px;color:var(--dim)}
+.rule.hard p{color:#cfcdc7}
+.strip b{left:0;right:0;transform:none;margin:0 auto;text-align:left}
+#curtain{transition:opacity .4s ease .1s,visibility 0s linear .5s}
+.facts{list-style:none;display:flex;flex-wrap:wrap;gap:10px 26px;padding:0;margin:18px 0 0;font-size:15px;color:#cfcdc7}
+.facts b{display:block;font-family:var(--head);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:18px}
+.cta-row span{color:var(--dim)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:18px}
+.tab{background:none;border:0;border-bottom:3px solid transparent;color:var(--dim);font:500 18px var(--head);text-transform:uppercase;letter-spacing:.04em;padding:10px 14px;cursor:pointer;transition:color .2s,border-color .2s}
+.tab:hover{color:var(--text)}
+.tab.on{color:#fff;border-bottom-color:var(--red)}
+.panel{display:none}
+.panel.on{display:block;animation:drop .35s ease}
+.final{text-align:center;padding:80px 16px 20px}
+.final h2{font-size:clamp(34px,6vw,64px);text-shadow:0 0 30px rgba(226,52,40,.5)}
+.final p{color:var(--dim);margin:.6em 0 1.2em}
+.final .btn{font-size:22px;padding:14px 34px}
+section{padding-top:56px}
+.strip{margin-top:56px}
+@media (max-width:820px){
+  .hero img.crest{max-width:120px}
+  .rank{grid-template-columns:36px 1fr}
+  .tab{font-size:16px;padding:9px 10px}
+  .hero .wrap{min-height:0}
+}
+</style>
+<style>
+.rank{grid-template-columns:64px 190px 1fr;min-height:76px}
+.rank .ico{width:64px;height:64px}
+.rank .ico img{width:100%;height:100%;object-fit:contain;transition:transform .3s;filter:drop-shadow(0 4px 10px rgba(0,0,0,.6))}
+.rank:hover .ico img,.rank.open .ico img{transform:scale(1.15) rotate(-4deg)}
+@media (max-width:820px){.rank{grid-template-columns:52px 1fr}.rank .ico{width:52px;height:52px}}
+</style>
+</head>
+<body>
+
+<div id="curtain"><img src="img/logo.png" alt=""></div>
+<div id="prog"></div><div id="spot" aria-hidden="true"></div>
+<button id="top-btn" aria-label="Back to top">↑</button>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/logo.png" alt=""><span><b>[MFIA]</b> The Italian Mafia</span></a>
+    <nav class="links" id="links">
+      <a href="#footage">Last wipe</a>
+      <a href="#new">New</a>
+      <a href="#join">Join</a>
+      <a href="#rules">Rules</a>
+      <a href="#dues">Dues</a>
+      <a href="#ranks">Ranks</a>
+      <a href="#members">Members</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn js-invite" href="#join">Discord</a>
+  </div>
+</header>
+
+<div class="smoke page" aria-hidden="true"></div>
+<div class="hero" id="top">
+  <div class="smoke" aria-hidden="true"></div><div class="smoke b" aria-hidden="true"></div>
+  <div class="embers" id="embers" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <div class="kicker">Rob Run crime family · tag [MFIA]</div>
+      <h1>The Italian Mafia</h1>
+      <p class="lead">We take businesses, hold districts and run the server. Show up. Pay your dues. Earn your rank.</p>
+      <div class="cta">
+        <a class="btn js-invite" href="#join">Join the Discord</a>
+        <a class="btn ghost" href="#join">How to get in</a>
+        <a class="btn ghost" href="#footage">Watch last wipe</a>
+      </div>
+      <div class="status"><i class="dot"></i> Recruiting. Applications are open.</div>
+      <ul class="facts"><li><b>Next wipe</b> Friday, Nov 20</li><li><b>Dues</b> $200,000 in 24h</li><li><b>You need</b> 18+, one clan only</li></ul>
+    </div>
+    <img class="crest" src="img/logo.png" alt="The Italian Mafia crest">
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b>13</b><span>Businesses held last wipe</span></div>
+    <div class="stat"><b>2</b><span>Districts held</span></div>
+    <div class="stat"><b>+35%</b><span>Laundering speed</span></div>
+    <div class="stat"><b>$1.98M</b><span>Business profit per hour</span></div>
+  </div>
+</div>
+
+<main class="wrap">
+
+<section id="footage">
+  <div class="sec-head"><span class="num">00</span><h2>Last wipe</h2><p>This is what the family did with it. The next one starts Friday.</p></div>
+  <div class="trailer"><video src="img/trailer.mp4" poster="img/trailer.jpg" controls preload="none" playsinline></video></div>
+  <div class="reel">
+    <figure><video src="img/loop_crew.mp4" poster="img/loop_crew.jpg" muted loop playsinline preload="none"></video><figcaption>One family</figcaption></figure>
+    <figure><video src="img/loop_fight.mp4" poster="img/loop_fight.jpg" muted loop playsinline preload="none"></video><figcaption>We move in</figcaption></figure>
+    <figure><video src="img/loop_above.mp4" poster="img/loop_above.jpg" muted loop playsinline preload="none"></video><figcaption>From above</figcaption></figure>
+    <figure><video src="img/loop_exec.mp4" poster="img/loop_exec.jpg" muted loop playsinline preload="none"></video><figcaption>Public execution</figcaption></figure>
+    <figure><video src="img/loop_cash.mp4" poster="img/loop_cash.jpg" muted loop playsinline preload="none"></video><figcaption>We got paid</figcaption></figure>
+    <figure><video src="img/loop_heli.mp4" poster="img/loop_heli.jpg" muted loop playsinline preload="none"></video><figcaption>Then we left</figcaption></figure>
+  </div>
+</section>
+
+<section id="territory">
+  <div class="sec-head"><span class="num">08</span><h2>What we held</h2><p>Looty Bay, last wipe.</p></div>
+  <a href="img/territory.png" target="_blank" rel="noopener"><img class="shot" src="img/territory.png" alt="Map of Looty Bay with the 13 businesses the clan held last wipe" loading="lazy"></a>
+  <div class="scroll" style="margin-top:12px">
+    <table class="tbl">
+      <tr><th>Business</th><th>Size</th><th>Profit per hour</th></tr>
+      <tr><td>Looty Bay Bank</td><td>Large</td><td class="g">$300,000</td></tr>
+      <tr><td>Grand Hotel</td><td>Large</td><td class="g">$300,000</td></tr>
+      <tr><td>Art Gallery</td><td>Large</td><td class="g">$300,000</td></tr>
+      <tr><td>Jewelry Store: West</td><td>Medium</td><td class="g">$166,667</td></tr>
+      <tr><td>Strip Club</td><td>Medium</td><td class="g">$166,667</td></tr>
+      <tr><td>Gas Station</td><td>Medium</td><td class="g">$166,667</td></tr>
+      <tr><td>Pharmacy: East · Pharmacy: West</td><td>Small</td><td class="g">$83,333 each</td></tr>
+      <tr><td>Convenience Store: East · Convenience Store: West</td><td>Small</td><td class="g">$83,333 each</td></tr>
+      <tr><td>Equipment Store: West · Electronics Store: West · Rusty Burgers Café</td><td>Small</td><td class="g">$83,333 each</td></tr>
+      <tr><td><strong>Districts:</strong> Rivertown (+20% laundering, 12% tax) · Dustbowl (+15% laundering, 8% tax)</td><td>District</td><td class="g">+35% laundering</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="new">
+  <div class="sec-head"><span class="num">00</span><h2>What is new this wipe</h2><p>Eight changes. Read them before you apply.</p></div>
+  <a href="img/wipe_update.png" target="_blank" rel="noopener"><img class="shot" src="img/wipe_update.png" alt="The New Order: three new ranks, automatic promotions, conflict strikes, Sell Leaders, black market, new applications, decoder bounties, dues at $200,000" loading="lazy"></a>
+</section>
+
+<section id="join">
+  <div class="sec-head"><span class="num">01</span><h2>How to get in</h2><p>Five steps. Ten minutes.</p></div>
+  <div class="steps">
+    <div class="step"><div><h3>Join the Discord</h3><p>Everything runs through it: applications, dues, conflicts, sells.</p></div></div>
+    <div class="step"><div><h3>Read the rules, then press Verify</h3><p>The form asks three things: your Rob Run name, your hours, and our tag. The tag is <code>MFIA</code>.</p></div></div>
+    <div class="step"><div><h3>Press Apply</h3><p>One form: your Rob Run name, your <strong>UID</strong> and if you have a mic. A leader reviews it.</p></div></div>
+    <div class="step"><div><h3>Get accepted</h3><p>You get the <strong>Associate</strong> rank and the <code>[MFIA]</code> tag. The Don adds you to the clan in game from your UID.</p></div></div>
+    <div class="step"><div><h3>Pay your wipe dues</h3><p>Hand the Don liquid cash in game inside your first 24 hours. That makes you a <strong>Soldato</strong>. From there the bot promotes you on hours and fights.</p></div></div>
+  </div>
+
+  <div class="cta-row"><a class="btn js-invite" href="#join">Join the Discord</a><span>Applications are open.</span></div>
+</section>
+
+</main>
+<div class="strip"><img src="img/gunner.jpg" alt="" loading="lazy"><b><small>No warnings</small>The code</b></div>
+<main class="wrap">
+
+<section id="rules">
+  <div class="sec-head"><span class="num">02</span><h2>The rules</h2><p>Nine of them. Rule 2 has no warnings.</p></div>
+  <div class="grid">
+    <div class="rule"><div class="n">1</div><div><h3>Good faith</h3><p>We trust each other. That is the whole deal. Break it and you are gone.</p></div></div>
+    <div class="rule hard"><div class="n">2</div><div><h3>Zero tolerance</h3><p><strong>Lying, stealing, raiding or insiding the family is an automatic kick the moment it is reported.</strong> No warnings. No second chance.</p></div></div>
+    <div class="rule"><div class="n">3</div><div><h3>Omertà</h3><p>Bases, plans and money stay in the family. Leaking is a kick.</p></div></div>
+    <div class="rule"><div class="n">4</div><div><h3>Listen to leadership</h3><p>Follow your Capo, the Underboss and the Don.</p></div></div>
+    <div class="rule"><div class="n">5</div><div><h3>Pay your wipe dues</h3><p>Liquid cash, handed to the Don in game, in your first 24 hours. Clan transfers do not count.</p></div></div>
+    <div class="rule"><div class="n">6</div><div><h3>Rank goes first</h3><p>At the sell house and the fence, the highest rank sells first.</p></div></div>
+    <div class="rule"><div class="n">7</div><div><h3>One clan only</h3><p>No being in another Rob Run clan at the same time.</p></div></div>
+    <div class="rule"><div class="n">8</div><div><h3>No cheating</h3><p>Cheat and the ban is permanent.</p></div></div>
+    <div class="rule"><div class="n">9</div><div><h3>Be decent</h3><p>No racism, doxxing or harassment. 18+ only. Discord's Terms apply.</p></div></div>
+  </div>
+  <div id="oath"><span>Press a rule to open it: <strong id="oath-n">0 / 9</strong></span><div class="bar"><i id="oath-bar"></i></div></div>
+  <div class="grid g2" style="margin-top:12px">
+    <div class="card"><h3>Getting in trouble</h3><p>Rule 2 is an instant kick. Anything else goes: warning, jail, demotion, kick.</p></div>
+    <div class="card"><h3>Kicked?</h3><p>Make your case in <code>⚖️│appeals</code>. One message: your in-game name and UID, why you were kicked, why you should be let back in. Leadership decides. The decision is final.</p></div>
+  </div>
+</section>
+
+</main>
+<div class="strip"><img src="img/money.jpg" alt="" loading="lazy"><b><small>Everyone pays in</small>The money</b></div>
+<main class="wrap">
+
+<section id="dues">
+  <div class="sec-head"><span class="num">04</span><h2>Wipe dues</h2><p>Everyone pays in. It buys claims, districts and war gear.</p></div>
+  <div class="grid g2">
+    <div class="card red">
+      <span class="tag red">Every wipe</span>
+      <p style="font-family:var(--head);font-size:56px;color:#fff;line-height:1;margin:.25em 0 .1em">$200,000</p>
+      <p>Liquid cash. Handed to the Don in game. Inside your first <strong>24 hours</strong>.</p>
+    </div>
+    <div class="card">
+      <ul class="clean">
+        <li><strong>Liquid cash only.</strong> Hand it to the Don in person, in game.</li>
+        <li><strong>Clan transfers do not count.</strong></li>
+        <li>The Don confirms each payment. The live list is in <code>📒│treasury-log</code>.</li>
+        <li>Past 24 hours the bot warns you and the Don sees your name.</li>
+        <li>Paying is what moves you from Associate to <strong>Soldato</strong>.</li>
+        <li>A second round can be called later in the wipe. It is announced first.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+<div class="strip"><img src="img/boss.jpg" alt="" loading="lazy"><b><small>Earn it</small>The ladder</b></div>
+<main class="wrap">
+
+<section id="ranks">
+  <div class="sec-head"><span class="num">03</span><h2>Ranks</h2><p>Eleven ranks. Rank is trust and time. Press one.</p></div>
+  <div class="ladder">
+    <div class="rank" style="--c:#e8c15a"><div class="ico"><img src="img/rank_don.png" alt="" loading="lazy"></div><b>Don</b><span>The boss. Final say on everything.</span></div>
+    <div class="rank" style="--c:#e23428"><div class="ico"><img src="img/rank_underboss.png" alt="" loading="lazy"></div><b>Underboss</b><span>The Don's right hand. Trusted with everything.</span></div>
+    <div class="rank" style="--c:#9c7bd1"><div class="ico"><img src="img/rank_consigliere.png" alt="" loading="lazy"></div><b>Consigliere</b><span>Inner circle. The Don's advisor.</span></div>
+    <div class="rank" style="--c:#5aa2e8"><div class="ico"><img src="img/rank_caporegime.png" alt="" loading="lazy"></div><b>Caporegime</b><span>Runs several trios. Trusted with applications and sells.</span></div>
+    <div class="rank" style="--c:#50c8e0"><div class="ico"><img src="img/rank_capodecina.png" alt="" loading="lazy"></div><b>Capodecina</b><span>Leads a trio in fights. Picked from the Goodfellas.</span></div>
+    <div class="rank" style="--c:#ec8c3c"><div class="ico"><img src="img/rank_goodfella.png" alt="" loading="lazy"></div><b>Goodfella</b><span>Trusted over time. The Don signs off on every one.</span></div>
+    <div class="rank" style="--c:#c9c9c9"><div class="ico"><img src="img/rank_made_man.png" alt="" loading="lazy"></div><b>Made Man</b><span>Proven this wipe. First pick for conflict squads.</span></div>
+    <div class="rank" style="--c:#40beb2"><div class="ico"><img src="img/rank_wiseguy.png" alt="" loading="lazy"></div><b>Wiseguy</b><span>Shows up. Hours in and fights attended.</span></div>
+    <div class="rank" style="--c:#57c784"><div class="ico"><img src="img/rank_soldato.png" alt="" loading="lazy"></div><b>Soldato</b><span>Paid in. Dues handed over inside 24 hours.</span></div>
+    <div class="rank" style="--c:#8a8a93"><div class="ico"><img src="img/rank_associate.png" alt="" loading="lazy"></div><b>Associate</b><span>Accepted. Not proven yet.</span></div>
+    <div class="rank"><div class="ico"><img src="img/rank_recruit.png" alt="" loading="lazy"></div><b>Recruit</b><span>Everyone starts here.</span></div>
+  </div>
+  <div class="grid g3" style="margin-top:12px">
+    <div class="card"><h3>How you move up</h3>
+      <ul class="clean">
+        <li>Higher rank means more trust and more time put in. Nothing else.</li>
+        <li>The bot counts your hours in voice with the family and the conflicts you fight in.</li>
+        <li>Up to Made Man it promotes you the moment you hit the numbers.</li>
+        <li>Goodfella needs the Don's yes. Above that, the Don picks.</li>
+        <li>Ranks reset every wipe. Come back and you climb faster.</li>
+      </ul></div>
+    <div class="card"><h3>What costs you rank</h3>
+      <ul class="clean">
+        <li>A strike blocks your next promotion.</li>
+        <li>Two strikes drops you a rank. Three is a kick.</li>
+        <li>You get a strike for missing a conflict you signed up for, or sitting in another voice room during one.</li>
+        <li>Miss five conflicts in a row without a word and that is a strike too. Showing up clears the count.</li>
+      </ul></div>
+    <div class="card"><h3>Earner</h3>
+      <img src="img/rank_earner.png" alt="" loading="lazy" style="width:72px;float:right;margin:-6px 0 0 10px">
+      <p>A gold tag on top of your rank, for giving well past the dues. Earners sell before everyone else at their rank.</p></div>
+  </div>
+</section>
+
+<section id="wipe">
+  <div class="sec-head"><span class="num">05</span><h2>Wipe day</h2><p>Same server. Money fast. Then territory.</p></div>
+  <div class="grid g3">
+    <div class="card"><span class="tag">Before</span><h3 style="margin-top:8px">Get the ping</h3><p>The server and time are posted in <code>⏰│wipe-day</code>. Grab <strong>Wipe Ping</strong> in pick-roles so you do not miss it.</p></div>
+    <div class="card"><span class="tag red">Hour 1</span><h3 style="margin-top:8px">Money first</h3><p>Everyone joins the same server. Make money fast and pay your dues so the clan can claim.</p></div>
+    <div class="card"><span class="tag">Rest of the wipe</span><h3 style="margin-top:8px">Take and hold</h3><p>Take businesses, hold districts, fight rival clans. Show up when a conflict is called.</p></div>
+  </div>
+</section>
+
+</main>
+<div class="strip"><img src="img/city.jpg" alt="" loading="lazy"><b><small>Looty Bay</small>Inside the family</b></div>
+<main class="wrap">
+
+<section id="members">
+  <div class="sec-head"><span class="num">00</span><h2>For members</h2><p>Already in the family. Pick a tab.</p></div>
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-t="ops">Conflicts</button><button class="tab" data-t="money">Sell &amp; trade</button><button class="tab" data-t="discord">Discord map</button><button class="tab" data-t="guide">Game guide</button>
+  </div>
+<div class="panel" id="ops" role="tabpanel">
+  <div class="grid g2">
+    <div class="card">
+      <h3>When one is called</h3>
+      <ul class="clean">
+        <li>It goes up as a Discord event, a post in <code>📢│announcements</code>, and a DM from the bot.</li>
+        <li>Press <strong>Interested</strong> on the event so leaders know who is coming.</li>
+        <li>Be in <strong>⚔️ Department of War</strong> voice 15 minutes early.</li>
+        <li>Leaders assign squads there. Made Men get first pick.</li>
+        <li>Each fight has its own room: Bank, Hotel, Strip Club, Gas Station.</li>
+      </ul>
+    </div>
+    <div class="scroll">
+      <table class="tbl">
+        <tr><th>Target</th><th>Fight</th><th>Profit per hour</th></tr>
+        <tr><td>Small business</td><td>3 v 3</td><td class="g">$83,333</td></tr>
+        <tr><td>Medium business</td><td>6 v 6</td><td class="g">$166,667</td></tr>
+        <tr><td>Large business</td><td>12 v 12</td><td class="g">$300,000</td></tr>
+        <tr><td>District</td><td>12 v 12</td><td class="g">Laundering speed + tax</td></tr>
+      </table>
+      <p class="note">Sizes and profits as we saw them last wipe.</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:12px"><h3>How many do we need tonight</h3>
+    <div class="calc" id="calc">
+      <label>Small · 3v3<div class="row"><button data-k="s" data-d="-1">−</button><output id="c-s">5</output><button data-k="s" data-d="1">+</button></div></label>
+      <label>Medium · 6v6<div class="row"><button data-k="m" data-d="-1">−</button><output id="c-m">1</output><button data-k="m" data-d="1">+</button></div></label>
+      <label>Large / district · 12v12<div class="row"><button data-k="l" data-d="-1">−</button><output id="c-l">0</output><button data-k="l" data-d="1">+</button></div></label>
+    </div>
+    <div class="need"><b id="need">21</b><span id="need-t">fighters needed · $583,332 per hour at stake</span></div>
+  </div>
+</div>
+<div class="panel" id="money" role="tabpanel">
+  <div class="grid g2">
+    <div class="card">
+      <h3>💰 Clan sell</h3>
+      <p>We take the sell warehouse, hold it, and everyone sells.</p>
+      <ul class="clean">
+        <li>Got loot? Press <strong>Ready to sell</strong> in <code>💰│clan-sell</code>.</li>
+        <li>When <strong>8</strong> are ready the bot calls it and pings the family.</li>
+        <li>You have 10 minutes to get in voice and to the warehouse.</li>
+        <li>Highest rank sells first. Expect PvP.</li>
+        <li>Your press lasts 60 minutes.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🕶️ Black market</h3>
+      <p>Buy, sell and trade inside the family in <code>🕶️│black-market</code>.</p>
+      <ul class="clean">
+        <li><strong>Sell / Trade:</strong> say what you have and what you want for it.</li>
+        <li><strong>Looking to buy:</strong> say what you want and what you pay.</li>
+        <li>Leave the price empty and it runs on <strong>best offer</strong>.</li>
+        <li><strong>Live auctions:</strong> leaders post an item, the family bids cash. Outbid and you get pinged.</li>
+        <li>The trade is done in game. The bot holds nothing.</li>
+        <li><strong>Any report of scamming or lying is an automatic kick.</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="panel" id="discord" role="tabpanel">
+  <div class="scroll">
+    <table class="tbl">
+      <tr><th>Channel</th><th>What it is for</th><th>Who</th></tr>
+      <tr><td>🚀│start-here</td><td>Every step and every button to get in. A "Where am I?" button tells you your next step.</td><td>Everyone</td></tr>
+      <tr><td>📜│rules · ✅│verify</td><td>Read, then verify. The tag is MFIA.</td><td>Everyone</td></tr>
+      <tr><td>🎭│pick-roles</td><td>Region, mic, play style and pings (Wipe, Raid, Heist, Event).</td><td>Recruit and up</td></tr>
+      <tr><td>📝│recruitment · 🆔│drop-uid</td><td>Apply, and drop your UID so you can be added in game.</td><td>Recruit and up</td></tr>
+      <tr><td>⚖️│appeals</td><td>Kicked from the clan? One message.</td><td>Recruit and up</td></tr>
+      <tr><td>🔎│looking-for-party</td><td>Find a duo or trio. Trio voice rooms 1 to 8 hold three each.</td><td>Recruit and up</td></tr>
+      <tr><td>📢│announcements · ⏰│wipe-day</td><td>Clan news, claims, the wipe server and time.</td><td>Recruit and up</td></tr>
+      <tr><td>🍝│family-chat</td><td>Members chat.</td><td>Family</td></tr>
+      <tr><td>🗓️│operations</td><td>Conflicts and wars. Sign up, squads get built.</td><td>Family</td></tr>
+      <tr><td>🟢│on-shift</td><td>Optional. Clock In when you are in game, Clock Out when done. Time counts for rank.</td><td>Family</td></tr>
+      <tr><td>💰│clan-sell · 🕶️│black-market</td><td>The sell queue, and trading inside the family.</td><td>Family</td></tr>
+      <tr><td>💰│treasury · 📒│treasury-log</td><td>How money is split, and the live dues list.</td><td>Family</td></tr>
+      <tr><td>🏠│base-locations</td><td>Family only. Leaking is an instant kick.</td><td>Family</td></tr>
+    </table>
+  </div>
+  <div class="grid" style="margin-top:12px">
+    <div class="card"><h3>Voice rooms</h3>
+      <ul class="clean">
+        <li><strong>❓ Help Desk:</strong> stuck on anything.</li>
+        <li><strong>🍷 Piazza Lounge:</strong> hang out.</li>
+        <li><strong>🎲 Trio 1 to 8:</strong> three seats each, for grinding.</li>
+        <li><strong>⚔️ Department of War:</strong> gather here before every conflict and sell.</li>
+        <li><strong>⚔️ Bank · Hotel · Strip Club · Gas Station:</strong> one room per fight.</li>
+      </ul></div>
+
+  </div>
+</div>
+<div class="panel" id="guide" role="tabpanel">
+  <div class="grid g2">
+    <div class="card"><h3>Land and settlements</h3>
+      <ul class="clean">
+        <li>Your base sits on a plot inside a settlement that a player owns.</li>
+        <li>Plot title: <strong>$100K</strong> (level 1), <strong>$800K</strong> (level 2), <strong>$2M</strong> (level 3). It must match the district level.</li>
+        <li>Settlement title: <strong>$200K</strong>, <strong>$2M</strong>, <strong>$6M</strong>.</li>
+        <li>The settlement owner takes <strong>5%</strong> of the cash residents launder.</li>
+        <li>Living in a higher district unlocks more Black Market items and Shipments.</li>
+      </ul></div>
+    <div class="card"><h3>Base defense and raids</h3>
+      <ul class="clean">
+        <li>Fuses add defense: <strong>+1</strong> uncommon, <strong>+3</strong> epic, <strong>+5</strong> legendary.</li>
+        <li>Raiders need more decoders for every fuse in the box.</li>
+        <li>A breach opens every door, gate and window for a while.</li>
+        <li>Raid block lasts <strong>7 minutes</strong>. Another breach adds 3, never past 7.</li>
+        <li>Repairing a breached box takes <strong>7 seconds</strong>. Fuses are not destroyed.</li>
+        <li>Fit an alarm. The epic one warns only the owner.</li>
+      </ul></div>
+    <div class="card"><h3>Police and wanted level</h3>
+      <ul class="clean">
+        <li>You hold up to <strong>3</strong> wanted points. Each civilian killed adds one.</li>
+        <li>At 3 you are Most Wanted and the whole city sees where you are.</li>
+        <li>Cuffing takes 2.5 seconds. The holding cell is 90 seconds.</li>
+        <li>Bribes go up in $10,000 steps, to $200,000 at most.</li>
+        <li>Arresting a wanted criminal pays the officer $15,000.</li>
+      </ul></div>
+    <div class="card"><h3>The four big heists</h3>
+      <ul class="clean">
+        <li><strong>Bank gold vault:</strong> needs a Drill. 7 piles of 9 gold bars, about $52,000 a bar.</li>
+        <li><strong>Police armory:</strong> needs an ID Card, bartered from 20 Evidence.</li>
+        <li><strong>Grand Hotel exhibition car:</strong> needs a Jammer.</li>
+        <li><strong>Gallery exhibit:</strong> the fourth city-wide job.</li>
+        <li>All four alert everyone in Looty Bay. Bring the family.</li>
+      </ul></div>
+    <div class="card"><h3>Selling loot</h3>
+      <ul class="clean">
+        <li>Fences are marked with a <strong>$</strong> on the map. Six in the city.</li>
+        <li>City sellers charge three times the base price. Buy from the Black Market when you can.</li>
+        <li>In the family, the highest rank sells first.</li>
+      </ul></div>
+    <div class="card"><h3>Clans and claims</h3>
+      <ul class="clean">
+        <li>Businesses are held by clans, not players. Each one has a claim board at its entrance.</li>
+        <li>Districts add laundering speed for the whole clan and pay tax.</li>
+        <li>Taxes are collected in the settlement where the clan leader lives. Protect it.</li>
+      </ul></div>
+  </div>
+
+  <h3 style="margin-top:28px">Tools worth keeping open</h3>
+  <p class="note">These open the community wiki in a new tab. Not ours.</p>
+  <div class="grid g3 tools">
+    <a class="card" href="https://wikily.gg/rob-run/interactive-map" target="_blank" rel="noopener"><b>Looty Bay map</b>Every business, ATM, fence and parking terminal.</a>
+    <a class="card" href="https://wikily.gg/rob-run/loot-map" target="_blank" rel="noopener"><b>Loot map</b>Where safes and loot spots are.</a>
+    <a class="card" href="https://wikily.gg/rob-run/raid-calculator" target="_blank" rel="noopener"><b>Raid calculator</b>Fuses in, decoders needed out.</a>
+    <a class="card" href="https://wikily.gg/rob-run/weed-farm-calculator" target="_blank" rel="noopener"><b>Farm calculator</b>What a farm setup pays.</a>
+    <a class="card" href="https://wikily.gg/rob-run/shipments-planner" target="_blank" rel="noopener"><b>Shipments planner</b>Plan your unlock tree.</a>
+    <a class="card" href="https://wikily.gg/rob-run/weapon-duel" target="_blank" rel="noopener"><b>Weapon duel</b>Compare two guns.</a>
+  </div>
+</div>
+</section>
+
+<section id="faq">
+  <div class="sec-head"><span class="num">11</span><h2>FAQ</h2></div>
+  <details><summary>The verify form says I got the tag wrong.</summary><p>Type <code>MFIA</code> in the last box. No brackets needed. Then press Verify again.</p></details>
+  <details><summary>Where do I find my UID?</summary><p>It is your Rob Run player ID. Put it in the Apply form or in <code>🆔│drop-uid</code>. The Don uses it to add you to the clan in game. If you cannot find it, ask in Help Desk voice.</p></details>
+  <details><summary>I was accepted but I am not in the clan in game.</summary><p>The Don adds people by hand from their UID. Check that your UID is dropped and correct, then wait. Do not ping.</p></details>
+  <details><summary>Can I pay dues with a clan transfer?</summary><p>No. Liquid cash, handed to the Don in game. Clan transfers do not count.</p></details>
+  <details><summary>What if I miss the 24 hours?</summary><p>The bot warns you and your name goes on the Don's list. People who do not pay and do not show up get cut when space is needed.</p></details>
+  <details><summary>Do I need a mic?</summary><p>Not to join. For conflicts you need to hear the calls, so be in voice.</p></details>
+  <details><summary>How do I get promoted?</summary><p>Pay dues, be in voice, show up to conflicts. The bot tracks it. Leaders promote from the numbers.</p></details>
+  <details><summary>I got scammed in the black market.</summary><p>Report it to a leader with proof. Scamming or lying is an automatic kick.</p></details>
+  <details><summary>I was kicked. Now what?</summary><p>One message in <code>⚖️│appeals</code>. Leadership decides. The decision is final.</p></details>
+</section>
+
+<section id="apply-now" class="final">
+  <h2>The next wipe starts Friday.</h2>
+  <p>Applications are open. Seats are not unlimited.</p>
+  <a class="btn js-invite" href="#join">Join the Discord</a>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>The Italian Mafia [MFIA]</strong> · a Rob Run clan. <a class="js-invite" href="#join">Join the Discord</a></p>
+    <p>Fan-made clan site. Not affiliated with or endorsed by the makers of Rob Run. Game numbers are from the community wiki at wikily.gg and can change with any update.</p>
+  </div>
+</footer>
+
+<script>
+// The one setting on this page. Empty = the Discord buttons scroll to "How to get in".
+const DISCORD_INVITE = "https://discord.gg/zQfg28ucWt";
+
+if (DISCORD_INVITE) document.querySelectorAll(".js-invite").forEach(a => { a.href = DISCORD_INVITE; a.target = "_blank"; a.rel = "noopener"; });
+
+// highlight the section you are in
+const links = [...document.querySelectorAll("#links a")];
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) links.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+}), { rootMargin: "-40% 0px -55% 0px" });
+document.querySelectorAll("section").forEach(s => io.observe(s));
+
+// reveal on scroll, play the footage loops only while they are on screen, drift the painted strips, embers
+const rv = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); rv.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll(".card,.rule,.rank,.step,.stat,.tbl,.reel figure,.trailer,.strip b,details,.shot").forEach((el, i) => { el.classList.add("rv"); el.style.transitionDelay = (i % 4) * 70 + "ms"; rv.observe(el); });
+const vids = new IntersectionObserver(es => es.forEach(e => { e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause(); }), { threshold: .35 });
+document.querySelectorAll(".reel video").forEach(v => vids.observe(v));
+const strips = [...document.querySelectorAll(".strip img")];
+addEventListener("scroll", () => strips.forEach(im => { const r = im.parentElement.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) im.style.transform = "translate3d(0," + ((r.top + r.height / 2 - innerHeight / 2) * -0.08).toFixed(1) + "px,0)"; }), { passive: true });
+const em = document.getElementById("embers");
+for (let i = 0; i < 22; i++) { const d = document.createElement("i"); d.style.left = Math.random() * 100 + "%"; d.style.setProperty("--x", (Math.random() * 160 - 80) + "px"); d.style.animationDuration = 7 + Math.random() * 9 + "s"; d.style.animationDelay = -Math.random() * 16 + "s"; em.appendChild(d); }
+</script>
+<script>
+// ---------- interaction layer ----------
+addEventListener("load", () => document.getElementById("curtain").classList.add("gone"));
+setTimeout(() => document.getElementById("curtain").classList.add("gone"), 2500);
+const prog = document.getElementById("prog"), topBtn = document.getElementById("top-btn");
+addEventListener("scroll", () => { const h = document.documentElement; prog.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + "%"; topBtn.classList.toggle("on", h.scrollTop > 700); }, { passive: true });
+topBtn.onclick = () => scrollTo({ top: 0, behavior: "smooth" });
+const spot = document.getElementById("spot");
+addEventListener("pointermove", e => { spot.style.transform = "translate3d(" + e.clientX + "px," + e.clientY + "px,0)"; }, { passive: true });
+// cards lean toward the pointer
+document.querySelectorAll(".card,.stat,.reel figure").forEach(el => {
+  el.classList.add("tilt");
+  el.addEventListener("pointermove", e => { const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; el.style.transform = "perspective(700px) rotateX(" + (-y * 5).toFixed(2) + "deg) rotateY(" + (x * 6).toFixed(2) + "deg) translateY(-3px)"; });
+  el.addEventListener("pointerleave", () => { el.style.transform = ""; });
+});
+// headings wipe in
+const hd = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); hd.unobserve(e.target); } }), { threshold: .4 });
+document.querySelectorAll(".sec-head").forEach(h => hd.observe(h));
+// stats count up
+const fmt = (v, t) => t.replace(/[\d.]+/, t.includes(".") ? v.toFixed(2) : Math.round(v));
+const cnt = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; cnt.unobserve(e.target); const el = e.target, t = el.textContent, end = parseFloat(t.replace(/[^\d.]/g, "")), t0 = performance.now(); const step = now => { const k = Math.min(1, (now - t0) / 1300), v = end * (1 - Math.pow(1 - k, 3)); el.textContent = fmt(v, t); if (k < 1) requestAnimationFrame(step); else el.textContent = t; }; requestAnimationFrame(step); }), { threshold: .6 });
+document.querySelectorAll(".stat b").forEach(b => cnt.observe(b));
+// ranks open on click
+const MORE = { "Don": "<b>How:</b> there is one.", "Underboss": "<b>How:</b> picked by the Don.", "Consigliere": "<b>How:</b> picked by the Don.", "Caporegime": "<b>How:</b> picked by the Don from the Capodecinas.", "Capodecina": "<b>How:</b> picked by the Don from the Goodfellas. <b>Does:</b> calls the shots for one trio.", "Goodfella": "<b>Needs:</b> 35 hours and 12 conflicts this wipe, or Made Man on your second wipe with us. Then the Don decides.", "Made Man": "<b>Needs:</b> 20 hours in voice with the family and 6 conflicts. The bot promotes you.", "Wiseguy": "<b>Needs:</b> 8 hours in voice with the family and 2 conflicts. The bot promotes you.", "Soldato": "<b>Needs:</b> wipe dues paid inside 24 hours.", "Associate": "<b>Needs:</b> an accepted application.", "Recruit": "<b>Next:</b> press Apply in the Discord." };
+document.querySelectorAll(".rank").forEach(r => { const m = document.createElement("div"); m.className = "more"; m.innerHTML = MORE[r.querySelector("b").textContent] || ""; r.appendChild(m); r.addEventListener("click", () => { const was = r.classList.contains("open"); document.querySelectorAll(".rank.open").forEach(x => x.classList.remove("open")); if (!was) r.classList.add("open"); }); });
+// rules: press to mark as read
+const rules = [...document.querySelectorAll(".rule")], oathN = document.getElementById("oath-n"), oathBar = document.getElementById("oath-bar");
+let read = []; try { read = JSON.parse(localStorage.getItem("mfia-rules") || "[]"); } catch (e) {}
+const oath = () => { const n = rules.filter(r => r.classList.contains("read")).length; oathN.textContent = n === rules.length ? "All 9. You know the code." : n + " / 9"; oathBar.style.width = (100 * n / rules.length) + "%"; document.getElementById("oath").classList.toggle("done", n === rules.length); };
+rules.forEach((r, i) => { r.classList.toggle("read", !!read[i]); r.addEventListener("click", () => { r.classList.toggle("read"); try { localStorage.setItem("mfia-rules", JSON.stringify(rules.map(x => x.classList.contains("read")))); } catch (e) {} oath(); }); });
+oath();
+// conflict head count
+const C = { s: 5, m: 1, l: 0 }, need = document.getElementById("need"), needT = document.getElementById("need-t");
+const calc = () => { for (const k in C) document.getElementById("c-" + k).textContent = C[k]; const n = C.s * 3 + C.m * 6 + C.l * 12, cash = C.s * 83333 + C.m * 166667 + C.l * 300000; need.textContent = n; needT.textContent = "fighters needed · $" + cash.toLocaleString("en-US") + " per hour at stake"; need.classList.add("bump"); setTimeout(() => need.classList.remove("bump"), 180); };
+document.getElementById("calc").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; e.preventDefault(); C[b.dataset.k] = Math.max(0, Math.min(12, C[b.dataset.k] + +b.dataset.d)); calc(); });
+// one FAQ open at a time
+document.querySelectorAll("#faq details").forEach(d => d.addEventListener("toggle", () => { if (d.open) document.querySelectorAll("#faq details[open]").forEach(o => { if (o !== d) o.open = false; }); }));
+</script>
+<script>
+// ---------- less text: long lists and big tables stay folded until asked for ----------
+document.querySelectorAll(".card ul.clean").forEach(ul => {
+  const keep = ul.closest("#guide") ? 2 : 3, items = [...ul.children];
+  if (items.length <= keep + 1) return;
+  items.slice(keep).forEach(li => li.classList.add("extra"));
+  const b = document.createElement("button"); b.className = "more-btn"; b.textContent = "+ " + (items.length - keep) + " more";
+  b.onclick = e => { e.stopPropagation(); const c = ul.closest(".card"), on = c.classList.toggle("all"); b.textContent = on ? "Show less" : "+ " + (items.length - keep) + " more"; };
+  ul.after(b);
+});
+[["#discord .scroll", "Show the channel list"], ["#territory .scroll", "Show the full list"]].forEach(([sel, label]) => {
+  const el = document.querySelector(sel); if (!el) return;
+  const d = document.createElement("details"); d.className = "fold"; const sm = document.createElement("summary"); sm.textContent = label;
+  el.before(d); d.append(sm, el); el.style.marginTop = "0";
+});
+</script>
+<script>
+// ---------- review pass: tabs, section numbers ----------
+const tabs = [...document.querySelectorAll(".tab")];
+const showTab = k => { tabs.forEach(t => t.classList.toggle("on", t.dataset.t === k)); document.querySelectorAll(".panel").forEach(p => p.classList.toggle("on", p.id === k)); };
+tabs.forEach(t => t.addEventListener("click", () => showTab(t.dataset.t)));
+showTab(["ops", "money", "discord", "guide"].includes(location.hash.slice(1)) ? location.hash.slice(1) : "ops");
+document.querySelectorAll(".sec-head .num").forEach((n, i) => { n.textContent = String(i + 1).padStart(2, "0"); });
+</script>
+</body>
+</html>
